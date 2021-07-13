@@ -6,14 +6,36 @@ import VideoPlayer from './videoPlayer/VideoPlayer';
 import relatedVideos from './relatedVideos/RelatedVideos';
 
 const AppHooks = () => {
-    const [videoID, setVideoID] = useState("7lCDEYXw3mM"); // default video 
-    //axios.get(http:wwww/${event.input}/) => returns video object : {videoID, description, title, etc...}
+    let [videoId, setVideoId] = useState("7lCDEYXw3mM"); // default video Ask JJ about this line if using let in this case would be okay.
     
+    let [userInput, setUserInput] = useState({});
+    
+    function handleChange(event){
+        console.log(event)
+        
+    
+        setUserInput(userInput => ({...userInput, [event.target.name]: event.target.value}));
+    
+        console.log(event.target.name);
+        
+    }
+    const getSpecificVideo = async () => {
+        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
+        setVideoId(videoId = getSpecificVideo.data.items[0].id.videoId)
+        console.log(videoId)
+    }
+    function handleSubmit(event){
+        event.preventDefault();
+        console.log(userInput)
+        getSpecificVideo();
 
+        // let axiosCall = axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
+        // console.log(axiosCall)
+    }
 return(
     <div>
-        <NavBar/>
-		<VideoPlayer/>
+        <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+		<VideoPlayer videoId = {videoId}/>
         <relatedVideos/>
     </div>
 )
