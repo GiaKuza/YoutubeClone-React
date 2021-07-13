@@ -1,0 +1,11 @@
+.titlebar-nav { 
+    background-color: rgb(45, 48, 49); 
+    width: 100%;
+}
+h1 {
+    padding-bottom: 0.2em; 
+    padding-left: 1em;
+    padding-top: 0.2em;
+    fill: white;
+    color: rgb(226, 202, 98);
+}
