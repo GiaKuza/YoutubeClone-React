@@ -1,6 +1,6 @@
 import React from 'react';
 import './RelatedVideos.css';
-//test
+//testg
 const relatedVideos = () => {
     
 
@@ -12,8 +12,7 @@ const relatedVideos = () => {
         <div class="card-body"> </div>
         <div class="card-body"> </div>
         <div class="card-body"> </div>
-</div
->
+</div>
     )
 }
 

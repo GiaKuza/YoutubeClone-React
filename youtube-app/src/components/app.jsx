@@ -23,7 +23,7 @@ const AppHooks = () => {
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
         setVideoId(videoId = getSpecificVideo.data.items[0].id.videoId)
-        console.log(videoId)
+        console.log(getSpecificVideo)
     }
     function handleSubmit(event){
         event.preventDefault();
