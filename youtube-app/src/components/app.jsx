@@ -14,8 +14,8 @@ const AppHooks = () => {
         console.log(event)
         
     
-        setUserInput(userInput => ({...userInput, [event.target.name]: event.target.value}));
-    
+        setUserInput(userInput = event.target.value)
+        console.log(userInput)
         console.log(event.target.name);
         
     }
@@ -29,8 +29,6 @@ const AppHooks = () => {
         console.log(userInput)
         getSpecificVideo();
 
-        // let axiosCall = axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
-        // console.log(axiosCall)
     }
 return(
     <div>
