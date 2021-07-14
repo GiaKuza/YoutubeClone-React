@@ -11,11 +11,17 @@ const relatedVideos = (props) => {
             <div class="card-container" style={{width:'18rem'}}>
                 
             <div  class="card-body"> 
-                <img src ="https://i.ytimg.com/vi/R3Ple1xplhs/default.jpg"></img>
+                <img src ={props.videoObject.items[1].snippet.thumbnails.default.url}></img>
             </div>
-            <div class="card-body"> </div>
-            <div class="card-body"> </div>
-            <div class="card-body"> </div>
+            <div class="card-body">
+                <img src ={props.videoObject.items[2].snippet.thumbnails.default.url}></img> 
+            </div>
+            <div class="card-body">
+                <img src ={props.videoObject.items[3].snippet.thumbnails.default.url}></img> 
+            </div>
+            <div class="card-body">
+                <img src ={props.videoObject.items[4].snippet.thumbnails.default.url}></img>
+            </div>
             </div>
             : <h1></h1>
             }
