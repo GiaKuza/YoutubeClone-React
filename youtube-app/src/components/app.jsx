@@ -32,20 +32,15 @@ const AppHooks = () => {
         getSpecificVideo();
 
     }
-    function isLoaded(){
-        let isLoaded = false;
-        if(userInput.length === 0){
-            isLoaded = false;
-        }
-        else{
-            isLoaded = true;
-        }
+    function getVideoId (Id){
+        setVideoId(Id)
     }
+
 return(
     <div className="app-div">
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
-        <RelatedVideos videoObject = {videoObject}/>
+        <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId}/>
        
     </div>
 )
