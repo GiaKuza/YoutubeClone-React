@@ -9,7 +9,9 @@ import './app.css';
 const AppHooks = () => {
     const [videoId, setVideoId] = useState("7lCDEYXw3mM");
     
-    const [userInput, setUserInput] = useState({});
+    const [userInput, setUserInput] = useState({}); //add a default search criteria
+
+    //useEffect for updating related videos, title, description
     
     function handleChange(event){
         console.log(event)
@@ -20,7 +22,7 @@ const AppHooks = () => {
         console.log(event.target.name);
     }
     const getSpecificVideo = async () => {
-        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
+        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU?`)
         let videoSearchResult = getSpecificVideo.data.items
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         console.log(getSpecificVideo)

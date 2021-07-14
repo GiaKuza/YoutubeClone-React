@@ -2,7 +2,8 @@ import React from 'react';
 import './RelatedVideos.css';
 //testg
 const relatedVideos = () => {
-    
+    //pass props with related videoIDs
+    //pass function that calls useEffects through props.
 
 
     return(
