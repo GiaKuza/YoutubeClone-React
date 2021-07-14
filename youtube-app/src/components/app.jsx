@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import NavBar from './navbar/NavBar';
+import NavBar from './navbar/Navbar';
 import VideoPlayer from './videoPlayer/VideoPlayer';
-import relatedVideos from './relatedVideos/RelatedVideos';
+import RelatedVideos from './relatedVideos/RelatedVideos';
 
 const AppHooks = () => {
     let [videoId, setVideoId] = useState("7lCDEYXw3mM"); // default video Ask JJ about this line if using let in this case would be okay.
@@ -34,7 +34,7 @@ return(
     <div>
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
-        <relatedVideos/>
+        <RelatedVideos/>
     </div>
 )
 }
