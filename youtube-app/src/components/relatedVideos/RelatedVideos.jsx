@@ -1,13 +1,19 @@
 import React from 'react';
 import './RelatedVideos.css';
-
-const relatedVideos = (props) => {
+//test
+const relatedVideos = () => {
+    
 
 
     return(
-        <div className="videocontainer">
-        <h1>Related Videos</h1>   
-        </div>
+        <div class="card-container" style={{width:'18rem'}}>
+            <h5 class="card-title">Related Videos</h5>
+        <div class="card-body"> </div>
+        <div class="card-body"> </div>
+        <div class="card-body"> </div>
+        <div class="card-body"> </div>
+</div
+>
     )
 }
 

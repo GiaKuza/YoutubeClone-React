@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBar from './navbar/Navbar';
 import VideoPlayer from './videoPlayer/VideoPlayer';
 import RelatedVideos from './relatedVideos/RelatedVideos';
+import './app.css';
 
 const AppHooks = () => {
     let [videoId, setVideoId] = useState("7lCDEYXw3mM"); // default video Ask JJ about this line if using let in this case would be okay.
@@ -31,7 +32,7 @@ const AppHooks = () => {
 
     }
 return(
-    <div>
+    <div className="app-div">
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
         <RelatedVideos/>
