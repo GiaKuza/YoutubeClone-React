@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import NavBar from './navbar/NavBar';
+import NavBar from './navbar/Navbar';
 import VideoPlayer from './videoPlayer/VideoPlayer';
 import RelatedVideos from './relatedVideos/RelatedVideos';
 import './app.css';
