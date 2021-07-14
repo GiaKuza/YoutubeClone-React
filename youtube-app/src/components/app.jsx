@@ -7,12 +7,11 @@ import RelatedVideos from './relatedVideos/RelatedVideos';
 import './app.css';
 
 const AppHooks = () => {
-    const [videoId, setVideoId] = useState("7lCDEYXw3mM");
+    let [videoId, setVideoId] = useState("7lCDEYXw3mM");
     
-    const [userInput, setUserInput] = useState({}); //add a default search criteria
-
-    //useEffect for updating related videos, title, description
+    let [userInput, setUserInput] = useState({});
     
+    let [videoObject, setVideoObject] = useState({});
     function handleChange(event){
         console.log(event)
         
@@ -22,8 +21,8 @@ const AppHooks = () => {
         console.log(event.target.name);
     }
     const getSpecificVideo = async () => {
-        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU?`)
-        let videoSearchResult = getSpecificVideo.data.items
+        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
+        setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         console.log(getSpecificVideo)
     }
@@ -33,11 +32,21 @@ const AppHooks = () => {
         getSpecificVideo();
 
     }
+    function isLoaded(){
+        let isLoaded = false;
+        if(userInput.length === 0){
+            isLoaded = false;
+        }
+        else{
+            isLoaded = true;
+        }
+    }
 return(
     <div className="app-div">
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
-        <RelatedVideos/>
+        <RelatedVideos videoObject = {videoObject}/>
+       
     </div>
 )
 }

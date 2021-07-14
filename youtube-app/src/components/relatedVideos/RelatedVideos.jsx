@@ -1,15 +1,15 @@
 import React from 'react';
 import './RelatedVideos.css';
 //testg
-const relatedVideos = () => {
-    //pass props with related videoIDs
-    //pass function that calls useEffects through props.
+const relatedVideos = (props) => {
+    console.log("relatedVideos",props);
 
-
+    
     return(
+        
         <div class="card-container" style={{width:'18rem'}}>
             <img></img>
-        <div class="card-body"> </div>
+        <div class="card-body">{props.videoObject.items[1].snippet.thumbnails.default.url}</div>
         <div class="card-body"> </div>
         <div class="card-body"> </div>
         <div class="card-body"> </div>
