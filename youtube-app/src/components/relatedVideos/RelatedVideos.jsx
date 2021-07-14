@@ -7,7 +7,7 @@ const relatedVideos = () => {
 
     return(
         <div class="card-container" style={{width:'18rem'}}>
-            <h5 class="card-title">Related Videos</h5>
+            <img></img>
         <div class="card-body"> </div>
         <div class="card-body"> </div>
         <div class="card-body"> </div>

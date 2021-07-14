@@ -7,9 +7,9 @@ import RelatedVideos from './relatedVideos/RelatedVideos';
 import './app.css';
 
 const AppHooks = () => {
-    let [videoId, setVideoId] = useState("7lCDEYXw3mM"); // default video Ask JJ about this line if using let in this case would be okay.
+    const [videoId, setVideoId] = useState("7lCDEYXw3mM");
     
-    let [userInput, setUserInput] = useState({});
+    const [userInput, setUserInput] = useState({});
     
     function handleChange(event){
         console.log(event)
@@ -18,12 +18,11 @@ const AppHooks = () => {
         setUserInput(userInput = event.target.value)
         console.log(userInput)
         console.log(event.target.name);
-        //conso
     }
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU`)
         let videoSearchResult = getSpecificVideo.data.items
-        setVideoId(videoId = getSpecificVideo.data.items[0].id.videoId)
+        setVideoId(getSpecificVideo.data.items[0].id.videoId)
         console.log(getSpecificVideo)
     }
     function handleSubmit(event){
