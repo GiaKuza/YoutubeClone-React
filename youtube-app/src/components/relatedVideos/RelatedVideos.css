@@ -1,6 +1,18 @@
-.videocontainer{
-    background-color: blue;
-    position: relative;
-    
+.card-container{
+    background-color: lightblue;
+    position: absolute;
+    height: 75%;
     width: 50%;
+    left: 1200px;
+    bottom: 100px;
+
+}
+.card-body{
+    position: relative;
+    padding-top: 10px;
+    height: 20%;
+    width: 100%;
+    background-color:black;
+    margin-top: 20px;
+
 }
