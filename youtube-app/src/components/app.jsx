@@ -16,7 +16,9 @@ const AppHooks = () => {
 
     let [videoTitle, setVideoTitle]= useState({});
 
-    const [videoDescription, setVideoDescription]= useState({});
+    let [videoDescription, setVideoDescription]= useState({});
+
+    
     function handleChange(event){
         //console.log(event)
         
@@ -31,6 +33,8 @@ const AppHooks = () => {
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
+        setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
+        setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
         //console.log(getSpecificVideo)
     }
     function handleSubmit(event){
@@ -66,7 +70,7 @@ return(
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
         <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId} />
-        <VideoDescription videoTitle ={videoTitle} videoDescription={VideoDescription}/>
+        <VideoDescription videoTitle ={videoTitle} videoDescription={videoDescription}/>
        
     </div>
 )
