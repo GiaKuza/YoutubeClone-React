@@ -13,35 +13,51 @@ const AppHooks = () => {
     
     let [videoObject, setVideoObject] = useState({});
     function handleChange(event){
-        console.log(event)
+        //console.log(event)
         
     
         setUserInput(userInput = event.target.value)
-        console.log(userInput)
-        console.log(event.target.name);
+        //console.log(userInput)
+        //console.log(event.target.name);
     }
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
+        console.log("getSpecificVideo", getSpecificVideo)
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
-        console.log(getSpecificVideo)
+        console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
+        //console.log(getSpecificVideo)
     }
     function handleSubmit(event){
         event.preventDefault();
-        console.log(userInput)
+        //console.log(userInput)
         getSpecificVideo();
 
     }
 
+<<<<<<< HEAD
     const getRelatedVideo = async (Id) => {
         const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${Id}&type=video&&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
         setVideoObject(getRelatedVideo.data)
         setVideoId(getRelatedVideo.data.items[0].id.videoId)
+=======
+    const getRelatedVideo = async () => {
+        //console.log("setvideobject just ran")
+        const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
+        
+        console.log("getrelatedvideo",getRelatedVideo.data)
+        setVideoObject(getRelatedVideo.data)
+        //console.log("getrelatedvideo1",getRelatedVideo.data)
+        //setVideoId(getRelatedVideo.data.items[0].id.videoId)
+        //console.log("getrelatedvideo",getRelatedVideo.data)
+        //https://www.googleapis.com/youtube/v3/search?relatedToVideoId={VIDEO ID HERE}&type=video&key={API KEY HERE}
+>>>>>>> a815c18e6059a985c03a3ef23ec852c08e4cb8ca
     }
 
 
     function getVideoId (Id){
         getRelatedVideo(Id)
+        setVideoId(Id)
     }
 
 return(
