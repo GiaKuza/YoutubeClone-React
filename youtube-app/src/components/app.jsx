@@ -32,15 +32,27 @@ const AppHooks = () => {
         getSpecificVideo();
 
     }
+
+    const getRelatedVideo = async (id) => {
+        const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
+        setVideoObject(getSpecificVideo.data)
+        setVideoId(getSpecificVideo.data.items[0].id.videoId)
+        console.log(getSpecificVideo)
+
+        //https://www.googleapis.com/youtube/v3/search?relatedToVideoId={VIDEO ID HERE}&type=video&key={API KEY HERE}
+    }
+
+
     function getVideoId (Id){
-        setVideoId(Id)
+        //setVideoId(Id)
+        getRelatedVideo(Id)
     }
 
 return(
     <div className="app-div">
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
-        <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId}/>
+        <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId} />
        
     </div>
 )

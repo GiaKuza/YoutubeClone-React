@@ -5,8 +5,6 @@ const relatedVideos = (props) => {
     //console.log("relatedVideos",props);
     //console.log("URL",props.videoObject.items[1].snippet.thumbnails.default.url)
 
-
-  
     return(
         <>
         
