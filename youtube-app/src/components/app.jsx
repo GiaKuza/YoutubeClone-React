@@ -33,15 +33,10 @@ const AppHooks = () => {
 
     }
 
-    const getRelatedVideo = async (id) => {
-        console.log("setvideobject just ran")
-        const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${id}&type=video&&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
-        console.log("getrelatedvideo2",getRelatedVideo.data)
+    const getRelatedVideo = async (Id) => {
+        const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${Id}&type=video&&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
         setVideoObject(getRelatedVideo.data)
-        console.log("getrelatedvideo1",getRelatedVideo.data)
         setVideoId(getRelatedVideo.data.items[0].id.videoId)
-        console.log("getrelatedvideo",getRelatedVideo.data)
-        //https://www.googleapis.com/youtube/v3/search?relatedToVideoId={VIDEO ID HERE}&type=video&key={API KEY HERE}
     }
 
 

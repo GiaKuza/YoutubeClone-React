@@ -15,8 +15,9 @@ const relatedVideos = (props) => {
             <div class="card-container" style={{width:'18rem'}}>
                 
             <div class="card-body"> 
-                {console.log("videoObject",props.videoObject)}
+                
                 <img onClick={() => {props.getVideoId(props.videoObject.items[1].id.videoId)}} src ={props.videoObject.items[1].snippet.thumbnails.default.url}></img>
+            {console.log("thumbnail url",props.videoObject.items[1])}
             </div>
             <div class="card-body">
                 <img onClick={() => {props.getVideoId(props.videoObject.items[2].id.videoId)}} src ={props.videoObject.items[2].snippet.thumbnails.default.url}></img> 
