@@ -5,7 +5,7 @@ const relatedVideos = (props) => {
     //console.log("relatedVideos",props);
     //console.log("URL",props.videoObject.items[1].snippet.thumbnails.default.url)
 
-
+    //add conditional rendering 
   
     return(
         <>
@@ -18,6 +18,7 @@ const relatedVideos = (props) => {
                 {console.log("videoObject",props.videoObject)}
                 <img onClick={() => {props.getVideoId(props.videoObject.items[1].id.videoId)}} src ={props.videoObject.items[1].snippet.thumbnails.default.url}></img>
             </div>
+            
             <div class="card-body">
                 <img onClick={() => {props.getVideoId(props.videoObject.items[2].id.videoId)}} src ={props.videoObject.items[2].snippet.thumbnails.default.url}></img> 
             </div>
