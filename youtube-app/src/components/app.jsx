@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBar from './navbar/NavBar';
 import VideoPlayer from './videoPlayer/VideoPlayer';
 import RelatedVideos from './relatedVideos/RelatedVideos';
+import VideoDescription from './videoDescription/VideoDescription';
 import './app.css';
 
 const AppHooks = () => {
@@ -12,6 +13,10 @@ const AppHooks = () => {
     let [userInput, setUserInput] = useState({});
     
     let [videoObject, setVideoObject] = useState({});
+
+    let [videoTitle, setVideoTitle]= useState({});
+
+    const [videoDescription, setVideoDescription]= useState({});
     function handleChange(event){
         //console.log(event)
         
@@ -22,7 +27,7 @@ const AppHooks = () => {
     }
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=AIzaSyBhPLRasz7YJgy2wZgyy_Wtcf4EpgBWtmU&part=snippet`)
-        console.log("getSpecificVideo", getSpecificVideo)
+        console.log(getSpecificVideo.data)
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
@@ -41,6 +46,7 @@ const AppHooks = () => {
         
         console.log("getrelatedvideo",getRelatedVideo.data)
         setVideoObject(getRelatedVideo.data)
+        
         //console.log("getrelatedvideo1",getRelatedVideo.data)
         //setVideoId(getRelatedVideo.data.items[0].id.videoId)
         //console.log("getrelatedvideo",getRelatedVideo.data)
@@ -51,6 +57,8 @@ const AppHooks = () => {
     function getVideoId (Id){
         getRelatedVideo(Id)
         setVideoId(Id)
+        setVideoTitle(getRelatedVideo.data.items[0].snippet.title)
+        setVideoDescription(getRelatedVideo.data.items[0].snippet.description)
     }
 
 return(
@@ -58,6 +66,7 @@ return(
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
         <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId} />
+        <VideoDescription videoTitle ={videoTitle} videoDescription={VideoDescription}/>
        
     </div>
 )
