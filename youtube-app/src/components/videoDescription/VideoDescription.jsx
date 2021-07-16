@@ -8,11 +8,16 @@ const VideoDescription= (props) => {
   console.log("videoTitle:",props.videoTitle)
   console.log("videoDescription", props.videoDescription)
     return(
-        <div>
-        
-            
-
+        <>
+        {props.videoTitle ? 
+        <div className='title'>
+            <h2>{props.videoTitle}</h2>
+            <h3>{props.videoDescription}</h3>
         </div>
+        : <h1> Loading </h1>
+        }
+            
+        </>
     );
 }
 
