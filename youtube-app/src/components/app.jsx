@@ -5,8 +5,7 @@ import VideoPlayer from './videoPlayer/VideoPlayer';
 import RelatedVideos from './relatedVideos/RelatedVideos';
 import VideoDescription from './videoDescription/VideoDescription';
 import './app.css';
-import '../keys'
-import apiKey from '../keys';
+import apiKey from '../keys'
 
 const AppHooks = () => {
     let [videoId, setVideoId] = useState("7lCDEYXw3mM");
@@ -17,7 +16,9 @@ const AppHooks = () => {
 
     let [videoTitle, setVideoTitle]= useState({});
 
-    let [videoDescription, setVideoDescription]= useState();
+    let [videoDescription, setVideoDescription]= useState({});
+
+
     function handleChange(event){
         //console.log(event)
         
@@ -31,10 +32,11 @@ const AppHooks = () => {
         console.log(getSpecificVideo.data)
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
-        console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
+        //console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
+        console.log("getSPECIFI",getSpecificVideo)
         setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
         setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
-        //console.log(getSpecificVideo)
+        
     }
     function handleSubmit(event){
         event.preventDefault();
@@ -69,7 +71,7 @@ return(
         <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
 		<VideoPlayer videoId = {videoId}/>
         <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId} />
-        <VideoDescription videoTitle ={videoTitle} videoDescription={videoDescription} videoObject = {videoObject}/>
+        <VideoDescription videoTitle ={videoTitle} videoDescription={videoDescription}/>
        
     </div>
 )
