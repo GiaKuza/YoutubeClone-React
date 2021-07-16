@@ -4,6 +4,7 @@ import NavBar from './navbar/NavBar';
 import VideoPlayer from './videoPlayer/VideoPlayer';
 import RelatedVideos from './relatedVideos/RelatedVideos';
 import VideoDescription from './videoDescription/VideoDescription';
+import Comments from './comments/Comments';
 import './app.css';
 import apiKey from '../keys'
 
@@ -62,8 +63,15 @@ const AppHooks = () => {
     function getVideoId (Id){
         getRelatedVideo(Id)
         setVideoId(Id)
+        getComment()
         //setVideoTitle(getRelatedVideo.data.items[0].snippet.title)
        // setVideoDescription(getRelatedVideo.data.items[0].snippet.description)
+    }
+
+    const getComment = async () => {
+        console.log('videoIdforgetcomment', videoId)
+        const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
+        console.log('getcomment', getcomment.data[0].text)
     }
 
 return(
@@ -72,7 +80,7 @@ return(
 		<VideoPlayer videoId = {videoId}/>
         <RelatedVideos videoObject = {videoObject} getVideoId = {getVideoId} setVideoTitle = {setVideoTitle} setVideoDescription={setVideoDescription} />
         <VideoDescription videoTitle ={videoTitle} videoDescription={videoDescription}/>
-       
+        <Comments videoId={videoId}/>
     </div>
 )
 }

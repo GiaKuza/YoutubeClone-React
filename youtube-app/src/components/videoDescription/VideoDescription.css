@@ -1,7 +1,9 @@
 .title{
-    background-color: lightblue;
+    background-color: white;
     position: absolute;
-    height: 100px;
-    width: 200px;
+    height: 400px;
+    width: 640px;
+    top: 650px;
+    left: 400px;
     
 }

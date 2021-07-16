@@ -12,7 +12,7 @@ const relatedVideos = (props) => {
         
             {props.videoObject.items ? 
             
-            <div class="card-container" style={{width:'18rem'}}>
+            <div class="card-container" style={{width:'18rem'}}>Related Videos
                 
             <div class="card-body"> 
                 

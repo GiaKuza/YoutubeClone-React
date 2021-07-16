@@ -10,8 +10,9 @@ const VideoDescription= (props) => {
         <>
         {props.videoTitle ? 
         <div className='title'>
-            <h2>{props.videoTitle}</h2>
-            <h3>{props.videoDescription}</h3>
+            <h5>Title:  {props.videoTitle}</h5>
+            <h5>==============================================</h5>
+            <h5>Description:  {props.videoDescription}</h5>
         </div>
         : <h1> Loading </h1>
         }
