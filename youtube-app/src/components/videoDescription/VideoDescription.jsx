@@ -8,18 +8,9 @@ const VideoDescription= (props) => {
   console.log(props.videoTitle)
   console.log(props.videoDescription)
     return(
-        <>
-        
-            {props.videoTitle  ? 
-            
-            <div class="card-container" style={{width:'18rem'}}>
-            <h2>{props.videoTitle}</h2>
-            <h2>{props.videoDescription}</h2>
-            </div>
-            : <h1></h1>
-            }
-
-        </>
+        <div>
+            <h5></h5>
+        </div>
     );
 }
 
