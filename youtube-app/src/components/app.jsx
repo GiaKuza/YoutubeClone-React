@@ -34,7 +34,6 @@ const AppHooks = () => {
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         //console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
-        console.log("getSPECIFI",getSpecificVideo)
         setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
         setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
         
@@ -49,10 +48,9 @@ const AppHooks = () => {
     const getRelatedVideo = async () => {
         //console.log("setvideobject just ran")
         const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&&key=${apiKey}&part=snippet`)
-        
         console.log("getrelatedvideo",getRelatedVideo.data)
         setVideoObject(getRelatedVideo.data)
-        
+        console.log("getRelated ID",getRelatedVideo.data)
         //console.log("getrelatedvideo1",getRelatedVideo.data)
         //setVideoId(getRelatedVideo.data.items[0].id.videoId)
         //console.log("getrelatedvideo",getRelatedVideo.data)
@@ -63,7 +61,7 @@ const AppHooks = () => {
     function getVideoId (Id){
         getRelatedVideo(Id)
         setVideoId(Id)
-        getComment()
+        getComment(Id)
         //setVideoTitle(getRelatedVideo.data.items[0].snippet.title)
        // setVideoDescription(getRelatedVideo.data.items[0].snippet.description)
     }
@@ -73,7 +71,7 @@ const AppHooks = () => {
         const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
         //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
         //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
-
+        console.log('this is getComment',getcomment.data)
     }
     //adds new comment to specific video
     const addComment = async () => {
@@ -82,18 +80,18 @@ const AppHooks = () => {
     }
     //adds new reply to specific comment on video
     const addReply = async () => {
-        const addReplys = await axios.post(`http://localhost:5000/api/collections/comments${commentIDHERE}/replies}`)
+        const addReplys = await axios.post(`http://localhost:5000/api/collections/comments'commentIDHERE'}/replies}`)
     }
 
     //updates likes on specific comment
     const addLike = async () => {
-        const addLikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/likes`)
+        const addLikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/likes`)
     }
 
 
     //updates dislikes on specific comment
     const addDislike = async () => {
-        const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/dislikes`)
+        const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/dislikes`)
     }
 return(
     <div className="app-div">
