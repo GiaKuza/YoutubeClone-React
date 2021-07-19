@@ -30,6 +30,7 @@ const AppHooks = () => {
         //console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
         setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
         setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
+        console.log(getSpecificVideo.data)
     }
     function handleSubmit(event){
         event.preventDefault();
@@ -58,10 +59,10 @@ const AppHooks = () => {
     }
 
     const getComment = async () => {
-        console.log('videoIdforgetcomment', videoId)
         const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
         //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
         //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
+        console.log('videoIdforgetcomment', videoId)
         console.log('this is getComment',getcomment.data)
     }
     //adds new comment to specific video
