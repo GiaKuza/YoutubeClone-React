@@ -6,12 +6,15 @@ import './Comments.css';
 //add likes/dislikes to comments as well.
 
 const Comments = (props) => { 
+   
     return (
     <div>
 <input className="form-control2" type="text" placeholder="Enter a comment"></input>
-<button type="comment-button" className="btn btn-dark">Submit</button>
+<button type="comment-button" className="btn btn-dark" onClick=''>Submit</button>
 </div>
 )
 };
+//add post request to app.jsx
+//add put request to update app.jsx
 
 export default Comments;

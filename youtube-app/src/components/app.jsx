@@ -71,7 +71,17 @@ const AppHooks = () => {
     const getComment = async () => {
         console.log('videoIdforgetcomment', videoId)
         const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
-        console.log('getcomment', getcomment.data[0].text)
+        //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
+        //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
+
+    }
+
+    const addComment = async () => {
+        const addcomment = await axios.post(`http://localhost:5000/api/collections/comments`)
+    }
+
+    const updateComment = async () => {
+        const updatecomment = await axios.put(``)
     }
 
 return(
