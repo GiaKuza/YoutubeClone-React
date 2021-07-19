@@ -82,18 +82,18 @@ const AppHooks = () => {
     }
     //adds new reply to specific comment on video
     const addReply = async () => {
-        const addReplys = await axios.post(`http://localhost:5000/api/collections/comments${commentIDHERE}/replies}`)
+       // const addReplys = await axios.post(`http://localhost:5000/api/collections/comments${commentIDHERE}/replies}`)
     }
 
     //updates likes on specific comment
     const addLike = async () => {
-        const addLikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/likes`)
+        //const addLikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/likes`)
     }
 
 
     //updates dislikes on specific comment
     const addDislike = async () => {
-        const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/dislikes`)
+       // const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/dislikes`)
     }
 return(
     <div className="app-div">
