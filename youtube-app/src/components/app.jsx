@@ -67,7 +67,7 @@ const AppHooks = () => {
     //adds new comment to specific video
     const addComment = async () => {
         const addComments = await axios.post(`http://localhost:5000/api/collections/comments`)
-
+  
     }
     //adds new reply to specific comment on video
     const addReply = async () => {
