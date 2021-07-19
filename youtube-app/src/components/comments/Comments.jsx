@@ -11,6 +11,7 @@ const Comments = (props) => {
     <div>
 <input className="form-control2" type="text" placeholder="Enter a comment"></input>
 <button type="comment-button" className="btn btn-dark" onClick=''>Submit</button>
+
 </div>
 )
 };
