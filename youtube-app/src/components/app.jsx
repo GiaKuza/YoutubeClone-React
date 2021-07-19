@@ -21,36 +21,27 @@ const AppHooks = () => {
 
 
     function handleChange(event){
-        //console.log(event)
-        
-    
         setUserInput(userInput = event.target.value)
-        //console.log(userInput)
-        //console.log(event.target.name);
     }
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=${apiKey}&part=snippet`)
-        console.log(getSpecificVideo.data)
         setVideoObject(getSpecificVideo.data)
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
         //console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
         setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
         setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
-        
     }
     function handleSubmit(event){
         event.preventDefault();
-        //console.log(userInput)
         getSpecificVideo();
 
     }
 
     const getRelatedVideo = async () => {
-        //console.log("setvideobject just ran")
         const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&&key=${apiKey}&part=snippet`)
         console.log("getrelatedvideo",getRelatedVideo.data)
         setVideoObject(getRelatedVideo.data)
-        console.log("getRelated ID",getRelatedVideo.data)
+        
         //console.log("getrelatedvideo1",getRelatedVideo.data)
         //setVideoId(getRelatedVideo.data.items[0].id.videoId)
         //console.log("getrelatedvideo",getRelatedVideo.data)
