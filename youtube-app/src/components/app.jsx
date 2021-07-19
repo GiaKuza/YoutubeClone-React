@@ -68,7 +68,7 @@ const AppHooks = () => {
 
     const getComment = async () => {
         console.log('videoIdforgetcomment', videoId)
-        const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
+        const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/7lCDEYXw3mM`)
         //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
         //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
         console.log('this is getComment',getcomment.data)
@@ -80,30 +80,18 @@ const AppHooks = () => {
     }
     //adds new reply to specific comment on video
     const addReply = async () => {
-<<<<<<< HEAD
-       // const addReplys = await axios.post(`http://localhost:5000/api/collections/comments${commentIDHERE}/replies}`)
-=======
         const addReplys = await axios.post(`http://localhost:5000/api/collections/comments'commentIDHERE'}/replies}`)
->>>>>>> 9929fcd8ff3b9d0f0564a835b3ca624c1012f13e
     }
 
     //updates likes on specific comment
     const addLike = async () => {
-<<<<<<< HEAD
-        //const addLikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/likes`)
-=======
         const addLikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/likes`)
->>>>>>> 9929fcd8ff3b9d0f0564a835b3ca624c1012f13e
     }
 
 
     //updates dislikes on specific comment
     const addDislike = async () => {
-<<<<<<< HEAD
-       // const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/${commentIDHERE}/dislikes`)
-=======
         const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/dislikes`)
->>>>>>> 9929fcd8ff3b9d0f0564a835b3ca624c1012f13e
     }
 return(
     <div className="app-div">
