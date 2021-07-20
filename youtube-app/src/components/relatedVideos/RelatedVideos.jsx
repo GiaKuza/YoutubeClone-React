@@ -22,13 +22,16 @@ const relatedVideos = (props) => {
             </div>
             
             <div class="card-body">
-                <img onClick={() => {props.getVideoId(props.videoObject.items[2].id.videoId)}} src ={props.videoObject.items[2].snippet.thumbnails.default.url}></img> 
+                <img onClick={() => {props.getVideoId(props.videoObject.items[2].id.videoId)}} src ={props.videoObject.items[2].snippet.thumbnails.default.url}></img>
+
             </div>
             <div class="card-body">
                 <img onClick={() => {props.getVideoId(props.videoObject.items[3].id.videoId)}} src ={props.videoObject.items[3].snippet.thumbnails.default.url}></img> 
+
             </div>
             <div class="card-body">
                 <img onClick={() => {props.getVideoId(props.videoObject.items[4].id.videoId)}} src ={props.videoObject.items[4].snippet.thumbnails.default.url}></img>
+
             </div>
             </div>
             : <h1></h1>

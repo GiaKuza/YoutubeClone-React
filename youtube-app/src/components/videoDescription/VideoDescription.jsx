@@ -3,7 +3,7 @@ import './VideoDescription.css';
 
 //this will be pulled from youtube api and accessed with props. Just add div for container for description/title
 const VideoDescription= (props) => {
-    //add cond"itional rendering 
+    console.log(props.videoTitle)
     return(
         <>
         {props.videoTitle ? 
