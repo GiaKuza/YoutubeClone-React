@@ -12,6 +12,8 @@ const AppHooks = () => {
     let [videoId, setVideoId] = useState("7lCDEYXw3mM");
     
     let [userInput, setUserInput] = useState({});
+
+    let [video, setVideo] = useState({});
     
     let [videoObject, setVideoObject] = useState({});
 
@@ -19,18 +21,45 @@ const AppHooks = () => {
 
     let [videoDescription, setVideoDescription]= useState();
 
+    let [videoComment, setVideoComment] = useState();
+
+    /*useEffect(() => {
+        console.log('Yo dawg, your videoData changed!')
+        console.log("video",video)
+       // console.log(video.id.videoId)
+        console.log(videoId)
+
+    }, [videoObject])
+    */
+
+
 
     function handleChange(event){
         setUserInput(userInput = event.target.value)
     }
+
+
+    const getComment = async (Id) => {
+        const comment = await axios.get(`http://localhost:5001/api/collections/comments/videos/${Id}`)
+        console.log("get commet was called", comment)
+
+
+        //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
+        //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
+       // console.log('videoIdforgetcomment', videoId)
+        //console.log('this is getComment',getcomment.data)
+    }
     const getSpecificVideo = async () => {
         const getSpecificVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${userInput}&key=${apiKey}&part=snippet`)
         setVideoObject(getSpecificVideo.data)
+       // console.log(getSpecificVideo.data.items[0])
+       // setVideo(getSpecificVideo.data.items[0])
         setVideoId(getSpecificVideo.data.items[0].id.videoId)
-        //console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
+        console.log("getSpecificVideo sets id of:",getSpecificVideo.data.items[0].id.videoId )
         setVideoTitle(getSpecificVideo.data.items[0].snippet.title)
         setVideoDescription(getSpecificVideo.data.items[0].snippet.description)
-        console.log(getSpecificVideo.data)
+        //console.log(getSpecificVideo.data)
+        getComment(getSpecificVideo.data.items[0].id.videoId);
     }
     function handleSubmit(event){
         event.preventDefault();
@@ -40,7 +69,7 @@ const AppHooks = () => {
 
     const getRelatedVideo = async () => {
         const getRelatedVideo = await axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&&key=${apiKey}&part=snippet`)
-        console.log("getrelatedvideo",getRelatedVideo.data)
+       // console.log("getrelatedvideo",getRelatedVideo.data)
         setVideoObject(getRelatedVideo.data)
         
         //console.log("getrelatedvideo1",getRelatedVideo.data)
@@ -53,37 +82,30 @@ const AppHooks = () => {
     function getVideoId (Id){
         getRelatedVideo(Id)
         setVideoId(Id)
-        getComment(Id)
+        //getComment(Id)
         //setVideoTitle(getRelatedVideo.data.items[0].snippet.title)
        // setVideoDescription(getRelatedVideo.data.items[0].snippet.description)
     }
 
-    const getComment = async () => {
-        const getcomment = await axios.get(`http://localhost:5000/api/collections/comments/videos/${videoId}`)
-        //implement getComment into getRelatedVideo and getSpecificVideo add a map function to map through list of comments
-        //implement getReply into getRelatedVideo and getSpecificVideo add a map function to map through list of replies
-        console.log('videoIdforgetcomment', videoId)
-        console.log('this is getComment',getcomment.data)
-    }
     //adds new comment to specific video
     const addComment = async () => {
-        const addComments = await axios.post(`http://localhost:5000/api/collections/comments`)
+       // const addComments = await axios.post(`http://localhost:5000/api/collections/comments`)
   
     }
     //adds new reply to specific comment on video
     const addReply = async () => {
-        const addReplys = await axios.post(`http://localhost:5000/api/collections/comments'commentIDHERE'}/replies}`)
+      //  const addReplys = await axios.post(`http://localhost:5000/api/collections/comments'commentIDHERE'}/replies}`)
     }
 
     //updates likes on specific comment
     const addLike = async () => {
-        const addLikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/likes`)
+      //  const addLikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/likes`)
     }
 
 
     //updates dislikes on specific comment
     const addDislike = async () => {
-        const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/dislikes`)
+       // const addDislikes = await axios.put(`http://localhost:500/api/collections/comments/'commentIDHERE'/dislikes`)
     }
 return(
     <div className="app-div">
